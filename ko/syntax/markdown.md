@@ -1,168 +1,192 @@
-# Markdown
+# 마크다운
 
-Most of the examples from this documentation are in Markdown. Markdown is default parser for GitBook, but one can also opt for the [AsciiDoc syntax](asciidoc.md).
+이 문서의 대부분의 예제는 마크다운입니다. 마크다운은 GitBook 의 기본 구문
+분석기입니다. 선택적으로 [AsciiDoc 문법](asciidoc.md)을 사용할 수 있습니다.
 
-Here’s an overview of Markdown syntax that you can use with GitBook (same as GitHub with some additions).
+다음은 GitBook 에서 사용할 수 있는 마크다운 문법에 대한 개요입니다 (GitHub 와
+같고 약간의 추가가 있습니다).
 
-### Headings
+### 제목
 
-To create a heading, add one to six `#` symbols before your heading text. The number of # you use will determine the size of the heading.
+제목을 만들기 위해 제목 문자열 앞에 1개에서 6개의 `#` 기호를 붙입니다. # 의
+개수는 제목의 크기를 나타냅니다.
 
 ```markdown
-# This is an <h1> tag
-## This is an <h2> tag
-###### This is an <h6> tag
+# 이것은 <h1> 태그입니다
+## 이것은 <h2> 태그입니다
+###### 이것은 <h6> 태그입니다
 ```
 
-GitBook supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:
+GitBook 은 제목 ID 를 명시적으로 설정하기 위한 좋은 방법을 제공합니다. 제목
+문자열 다음에 (문자열과 적어도 1개 이상의 공백으로 구분된) 여는 중괄호, 해시,
+ID, 닫는 중괄호를 넣으면 ID 가 제목에 설정됩니다. atx 방식 제목의 닫는 해시를
+사용한다면, 닫는 해시 다음에 제목 ID 를 넣으면 됩니다. 예시입니다:
 
 ```markdown
-Hello {#id}
+안녕 {#id}
 -----
 
-# Hello {#id}
+# 안녕 {#id}
 
-# Hello # {#id}
+# 안녕 # {#id}
 ```
 
-### Paragraphs and Line Breaks {#paragraphs}
+### 문단과 줄바꿈 {#paragraphs}
 
-A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line — a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.
+문단은 단순히 하나 이상의 빈줄로 분리된 하나 이상의 문자열의 연속된 줄입니다.
+(빈줄은 빈줄로 보이는 모든 줄입니다 — 줄은 공백으로 간주되는 빈칸과 탭을
+제외하고 아무것도 포함하지 않습니다.) 일반 문단은 공백이나 탭으로 들여쓰기 할 수
+없습니다.
 
 ```
-Here's a line for us to start with.
+이줄은 시작줄입니다.
 
-This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
+이 줄은 이전과 두번의 개행으로 분리되었으므로, *분리된 문단*입니다.
 ```
 
-### Emphasis {#emphasis}
+### 강조 {#emphasis}
 
 ```markdown
-*This text will be italic*
-_This will also be italic_
+*이 글자는 비스듬합니다*
+_이것도 비스듬합니다_
 
-**This text will be bold**
-__This will also be bold__
+**이 글자는 굵게됩니다**
+__이것도 굵게됩니다__
 
-~~This text will be crossed out.~~
+~~이 글자는 취소선이 그어집니다.~~
 
-_You **can** combine them_
+_그것들을 결합**할 수 있습니다**_
 ```
 
-### Lists {#lists}
+### 목록 {#lists}
 
-Markdown supports ordered (numbered) and unordered (bulleted) lists.
+마크다운은 순서있는 (번호가 매겨진) 목록과 순서없는 (글머리 기호가 달린) 목록을
+지원합니다.
 
-##### Unordered
+##### 순서없는 목록
 
-Unordered lists use asterisks, pluses, and hyphens — interchangably — as list markers:
+순서없는 목록은 목록 표시로 별표, 더하기, 하이픈을 사용하며 교차가능합니다:
 
 ```markdown
-* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b
+* 항목 1
+* 항목 2
+  * 항목 2a
+  * 항목 2b
 ```
 
-##### Ordered
+##### 순서있는 목록
 
-Ordered lists use numbers followed by periods:
+순서있는 목록은 바로 다음에 점이 있는 숫자를 사용합니다:
 
 ```markdown
-1. Item 1
-2. Item 2
-3. Item 3
-   * Item 3a
-   * Item 3b
+1. 항목 1
+2. 항목 2
+3. 항목 3
+   * 항목 3a
+   * 항목 3b
 ```
 
-### Links {#links}
+### 연결 {#links}
 
-Markdown supports two style of links: inline and reference.
+마크다운은 두가지 방식의 연결을 지원합니다: 인라인과 참조.
 
-A simple link can be created by surrounding the text with square brackets and the link URL with parentheses:
+간단한 연결은 문자열을 대괄호로 감싸고 연결 웹주소를 괄호로 감싸서 만들 수
+있습니다:
 
 ```markdown
-This is [an example](http://example.com/ "Title") inline link with a title.
+이것은 제목이 있는 인라인 연결 [예제](http://example.com/ "제목")입니다.
 
-[This link](http://example.net/) has no title attribute.
+[이 연결](http://example.net/)은 제목 속성이 없습니다.
 ```
 
-Links can point to relative paths, anchors or absolute urls.
+연결은 상대 경로, 앵커 또는 절대 웹주소를 가리킬 수 있습니다.
 
 
-### References
+### 참조
 
-There is another way to create links which does not interrupt the text flow. The URL and title are defined using a reference name and this reference name is then used in square brackets instead of the link URL:
+글의 흐름을 방해하지 않고 연결을 만들 수 있는 다른 방법이 있습니다. 웹주소와
+제목이 참조이름을 사용하여 정의됩니다. 이 참조이름은 웹주소 연결대신 대괄호 안에
+사용됩니다:
 
 ```markdown
-This is [an example][id] reference-style link.
+이것은 참조 방식 연결 [예제][id]입니다.
 ```
 
-Then, anywhere in the document, you define your link label like this, on a line by itself:
+그러고는 문서의 아무위치에 이와 같이 한줄로 연결을 정의합니다.
 
 ```markdown
-[id]: http://example.com/  "Optional Title Here"
+[id]: http://example.com/  "제목을 여기에 선택적으로 입력할 수 있습니다"
 ```
 
-### Images {#images}
+### 그림 {#images}
 
-Images can be created in a similar way than links: just use an exclamation mark before the square brackets. The link text will become the alternative text of the image and the link URL specifies the image source:
+그림은 연결과 유사한방식으로 만들 수 있습니다: 단지 대괄호 앞에 느낌표를
+사용하면 됩니다. 연결 문구는 그림의 대체 문자열로 사용될 것이며 명시된 연결
+웹주소는 그림의 자료로 사용될 것 입니다:
 
 ```markdown
-An image: ![gras](img/image.jpg)
+그림: ![gras](img/image.jpg)
 ```
 
-### Blockquotes {#blockquotes}
+### 인용구 {#blockquotes}
 
-A blockquote is started using the `>` marker followed by an optional space; all following lines that are also started with the blockquote marker belong to the blockquote. You can use any block-level elements inside a blockquote:
+인용구는 `>` 를 사용해 시작하며 다음에 선택적으로 공백이 옵니다; 또한 인용구
+표시로 시작되는 모든 다음 행은 인용구에 속합니다. 인용구 내에서 블록 레벨 요소를
+사용할 수 있습니다:
 
 ```markdown
-As Kanye West said:
+Kanye West 가 말했습니다:
 
-> We're living the future so
-> the present is our past.
+> 우리는 미래를 살고있습니다. 그래서
+> 현재는 우리의 과거입니다.
 ```
 
-### Tables {#tables}
+### 표 {#tables}
 
-You can create tables by assembling a list of words and dividing them with hyphens `-` (for the first row), and then separating each column with a pipe `|`:
+(첫행은) `-` 로 나눈 단어의 목록을 조합해서 표를 만들 수 있습니다. 각 열은
+파이프 `|` 로 구분합니다:
 
 ```markdown
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| 첫번째 제목 | 두번째 제목 |
+| ----------- | ----------- |
+| 내용 셀     | 내용 셀     |
+| 내용 셀     | 내용 셀     |
 ```
 
-The pipes on either end of the table are optional. Cells can vary in width and do not need to be perfectly aligned within columns. There must be at least three hyphens in each column of the header row.
+표 양 끝의 파이프는 선택사항입니다. 셀의 폭은 다를 수 있으며 열 내에서 완벽히
+정렬할 필요가 없습니다. 제목 행의 각 열은 적어도 3개 하이픈이 있어야합니다.
 
-### Code {#code}
+### 코드 {#code}
 
-Markdown supports two different code block styles. One uses lines indented with either four spaces or one tab whereas the other uses lines with tilde characters as delimiters – therefore the content does not need to be indented:
+마크다운은 두종류의 코드 블록 방식을 지원합니다. 하나는 4개의 공백 또는 탭으로
+들여쓰기 줄을 사용하는 반면에 다른것은 구분자로 물결 문자를 사용하는 줄을
+사용합니다. – 따라서 내용을 들여쓰기 할 필요가 없습니다:
 
 ```markdown
-This is a sample code block.
+이것은 코드 블록 예제입니다.
 
-    Continued here.
+    여기에 계속.
 
 ```
 
-##### Fenced code blocks
+##### 코드 블록 울타리
 
-You can create fenced code blocks by placing triple backticks ` ``` ` before and after the code block. We recommend placing a blank line before and after code blocks to make the raw formatting easier to read.
+코드 블록 전과 후에 세개의 역 따옴표 ` ``` ` 를 놓아서 코드 블록 울타리를 만들
+수 있습니다. 원시 서식을 읽기 쉽게하기 위해 코드 블록의 전후에 빈줄을 놓을 것을
+권합니다.
 
     ```
     function test() {
-      console.log("notice the blank line before this function?");
+      console.log("이 함수 전의 빈줄을 알아채셨습니까?");
     }
     ```
 
-##### Syntax highlighting
+##### 구문 강조
 
-You can add an optional language identifier to enable syntax highlighting in your fenced code block.
+코드 블록 울타리에 구문 강조를 사용하기 위해 선택적으로 언어 식별자를 추가할 수
+있습니다.
 
-For example, to syntax highlight Ruby code:
+Ruby 코드 구문강조 예제입니다:
 
     ```ruby
     require 'redcarpet'
@@ -170,54 +194,58 @@ For example, to syntax highlight Ruby code:
     puts markdown.to_html
     ```
 
-##### Inline code
+##### 인라인 코드
 
-Text phrases can be marked up as code by surrounding them with backticks:
+텍스트 문구는 역 따옴표로 둘러 싸서 코드로 표시할 수 있습니다:
 
-    Use `gitbook` to convert the `text` in markdown
-    syntax to HTML.
+    마크다운 문법의 `문자열`을 HTML 로 변환하기 위해
+    `gitbook` 을 사용하세요.
 
-### Footnotes
+### 각주
 
-GitBook supports a simple syntax for such footnotes. Footnotes are relative to each pages.
+GitBook 은 각주에 대한 간단한 구문을 지원합니다. 각주는 각 페이지를 기준으로
+합니다.
 
 ```markdown
-Text prior to footnote reference.[^2]
+각주 참조 전의 문자열.[^2]
 
-[^2]: Comment to include in footnote.
+[^2]: 각주에 포함되는 언급.
 ```
 
 ### HTML
 
-GitBook supports use of raw HTML in your text, Markdown syntax in HTML is not processed:
+GitBook 은 원시 HTML 사용을 지원합니다. HTML 안의 마크다운 구문은 처리되지
+않습니다:
 
 ```
 <div>
-Markdown here will not be **parsed**
+이곳의 마크다운은 **분석되지**않을 것 입니다.
 </div>
 ```
 
-### Horizontal Rule
+### 가로줄
 
-Horizontal Rules can be inserted using three or more asterisks, dashes or underscores, optionally separated by spaces or tabs, on an otherwise blank line:
+가로줄은 세개 이상의 별표, 선, 밑줄을 사용하여 추가할 수 있으며, 빈줄에 공백
+또는 탭으로 분리될 수 있습니다:
 
 ```markdown
-Three or more...
+세개 이상...
 
 ---
 
-Hyphens
+가로줄
 
 ***
 
-Asterisks
+별표
 
 ```
 
-### Ignoring Markdown formatting
+### 마크다운 형식 무시
 
-You can tell GitBook to ignore (or escape) Markdown formatting by using `\` before the Markdown character.
+마크다운 문자 앞에 `\` 를 사용하여 GitBook 에게 마크다운 형식을 무시 (또는 탈출)
+하라고 알려줄 수 있습니다.
 
 ```
-Let's rename \*our-new-project\* to \*our-old-project\*.
+\*our-old-project\* 의 이름을 \*our-new-project\* 로 변경해보세요.
 ```

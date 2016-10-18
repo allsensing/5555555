@@ -1,65 +1,65 @@
-# Hooks
+# 훅
 
-Hooks is a method of augmenting or altering the behavior of the process, with custom callbacks.
+훅은 사용자 정의 콜백으로 프로세스의 동작을 보강하거나 변경하는 방법입니다.
 
-### List of hooks
+### 훅의 목록
 
-### Relative to the global pipeline
+### 전역 파이프라인과 연관된 것
 
-| Name | Description | Arguments |
+| 이름 | 설명 | 인수 |
 | ---- | ----------- | --------- |
-| `init` | Called after parsing the book, before generating output and pages. | None |
-| `finish:before` | Called after generating the pages, before copying assets, cover, ... | None |
-| `finish` | Called after everything else. | None |
+| `init` | 책을 분석한 후에, 출력과 페이지를 생성하기 전에 호출됩니다. | 없음 |
+| `finish:before` | 페이지를 생성한 후에, 자산, 표지, 등을 복사하기 전에 호출됩니다. | 없음 |
+| `finish` | 모든 것이 끝난 후 호출됩니다. | 없음 |
 
-### Relative to the page pipeline
+### 페이지 파이프라인과 연관된 것
 
-> It is recommended using [templating](./templating.md) to extend page parsing.
+> 페이지 분석을 확장하는데 [템플릿](./templating.md) 사용을 권장합니다.
 
-| Name | Description | Arguments |
+| 이름 | 설명 | 인수 |
 | ---- | ----------- | --------- |
-| `page:before` | Called before running the templating engine on the page | Page Object |
-| `page` | Called before outputting and indexing the page. | Page Object |
+| `page:before` | 페이지에서 템플릿 엔진을 실행하기 전에 호출됩니다. | 페이지 객체 |
+| `page` | 페이지를 출력하고 색인하기 전에 호출됩니다. | 페이지 객체 |
 
-##### Page Object
+##### 페이지 객체
 
 ```js
 {
-    // Parser named
+    // 구문 분석기 이름
     "type": "markdown",
 
-    // File Path relative to book root
+    // 책 루트에 대한 파일의 상대 경로
     "path": "page.md",
 
-    // Absolute file path
+    // 파일의 절대 경로
     "rawpath": "/usr/...",
 
-    // Title of the page in the SUMMARY
+    // 개요에서 페이지의 제목
     "title": "",
 
-    // Content of the page
-    // Markdown/Asciidoc in "page:before"
-    // HTML in "page"
+    // 페이지의 내용
+    // "page:before" 의 마크다운/Asciidoc
+    // "page" 의 HTML
     "content": "# Hello"
 }
 ```
 
-##### Example to add a title
+##### 제목 추가 예시
 
-In the `page:before` hook, `page.content` is the markdown/asciidoc content.
+`page:before` 훅에서, `page.content` 는 마크다운/AsciiDoc 내용입니다.
 
 ```js
 {
     "page:before": function(page) {
-        page.content = "# Title\n" +page.content;
+        page.content = "# 제목\n" +page.content;
         return page;
     }
 }
 ```
 
-##### Example to replace some html
+##### 몇몇 HTML 을 대체하는 예시
 
-In the `page` hook, `page.content` is the HTML generated from the markdown/asciidoc conversion.
+`page` 훅에서, `page.content` 는 마크다운/AsciiDoc 변환으로 생성된 HTML 입니다.
 
 ```js
 {
@@ -72,11 +72,11 @@ In the `page` hook, `page.content` is the HTML generated from the markdown/ascii
 ```
 
 
-### Asynchronous Operations
+### 비동기 작업
 
-Hooks callbacks can be asynchronous and return promises.
+훅 콜백은 비동기로 처리하고 프로미스를 반환할 수 있습니다.
 
-Example:
+예시:
 
 ```js
 {

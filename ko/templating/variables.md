@@ -1,86 +1,86 @@
-# Variables
+# 변수
 
-The following is a reference of the available data during book's parsing and theme generation.
+다음은 책의 구문 분석과 테마 생성시에 사용할 수 있는 자료의 참조입니다.
 
-### Global Variables
+### 전역 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `book` | Book-wide information + configuration settings from `book.json`. See below for details. |
-| `gitbook` | GitBook specific information |
-| `page` | Current page specific information |
-| `file` | File associated with the current page specific information |
-| `readme` | Information about the Readme |
-| `glossary` | Information about the Glossary |
-| `summary` | Information about the table of contents |
-| `languages` | List of languages for multi-lingual books |
-| `output` | Information about the output generator |
-| `config` | Dump of the `book.json` |
+| `book` | 책 전역 정보 + `book.json` 의 구성 설정. 자세한 내용은 아래를 보세요. |
+| `gitbook` | GitBook 특정 정보 |
+| `page` | 현재 페이지 특정 정보 |
+| `file` | 현재 페이지 특정 정보와 연관된 파일 |
+| `readme` | Readme 에 대한 정보 |
+| `glossary` | 용어사전에 대한 정보 |
+| `summary` | 목차에 대한 정보 |
+| `languages` | 다국어 책 언어의 목록 |
+| `output` | 출력 생성기에 대한 정보 |
+| `config` | `book.json` 의 덤프 |
 
-### Book Variables
+### 책 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `book.[CONFIGURATION_DATA]` | All the `variables` set via the `book.json` are available through the book variable. |
-| `book.language` | Current language for a multilingual book |
+| `book.[CONFIGURATION_DATA]` | `book.json` 을 통해 설정된 모든 `변수들`은 책 변수를 통해 사용가능합니다. |
+| `book.language` | 다국어 책에서 현재 언어 |
 
-### GitBook Variables
+### GitBook 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `gitbook.time` | The current time (when you run the `gitbook` command) . |
-| `gitbook.version` | Version of GitBook used to generate the book |
+| `gitbook.time` | 현재 시각 (`gitbook` 명령이 실행됐을 때). |
+| `gitbook.version` | 책 생성에 사용된 GitBook 의 버전 |
 
-### File Variables
+### 파일 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `file.path` | The path to the raw page |
-| `file.mtime` | Modified Time. Last time the file was modified |
-| `file.type` | The name of the parser used to compile this file (ex: `markdown`, `asciidoc`, etc) |
+| `file.path` | 원시 페이지 경로 |
+| `file.mtime` | 수정된 시각. 파일이 수정된 마지막 시각 |
+| `file.type` | 이 파일을 번역하는데 사용된 구문 분석기의 이름 (예: `markdown`, `asciidoc`, 등) |
 
-#### Page Variables
+#### 페이지 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `page.title` | Title of the page |
-| `page.previous` | Previous page in the Table of Contents (can be `null`) |
-| `page.next` | Next page in the Table of Contents (can be `null`) |
-| `page.dir` | Text direction, based on configuration or detected from content (`rtl` or `ltr`) |
+| `page.title` | 페이지 제목 |
+| `page.previous` | 목차에서 이전 페이지 (`null` 이 될 수 있음) |
+| `page.next` | 목차에서 다음 페이지 (`null` 이 될 수 있음) |
+| `page.dir` | 글 방향, 설정에 따르거나 내용에서 검출됨 (`rtl` 또는 `ltr`) |
 
-#### Table of Contents Variables
+#### 목차 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `summary.parts` | List of sections in the Table of Contents |
+| `summary.parts` | 목차에서 부분의 목록 |
 
-The whole table of contents (`SUMMARY.md`) can be accessed:
+전체 목차 (`SUMMARY.md`) 는 접근될 수 있습니다:
 
-`summary.parts[0].articles[0].title` will return the title of the first article.
+`summary.parts[0].articles[0].title` 는 첫 글의 제목을 반환할 것 입니다.
 
-#### Multi-lingual book Variable
+#### 다국어 책 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `languages.list` | List of languages for this book |
+| `languages.list` | 이 책의 언어 목록 |
 
-Languages are defined by `{ id: 'en', title: 'English' }`.
+언어는 `{ id: 'en', title: 'English' }` 으로 정의됩니다.
 
-### Output Variables
+### 출력 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `output.name` | Name of the output generator, possible values are `website`, `json`, `ebook` |
-| `output.format` | When `output.name == "ebook"`, `format` defines the ebook format that will be generated, possible values are `pdf`, `epub` or `mobi` |
+| `output.name` | 출력 생성기의 이름, 가능한 값은 `website`, `json`, `ebook` 입니다 |
+| `output.format` | `output.name == "ebook"` 일때, `format` 은 생성될 전자책 형식을 정의합니다. 가능한 값은 `pdf`, `epub`, `mobi` 입니다 |
 
-### Readme Variables
+### Readme 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `readme.path` | Path to the Readme in the book |
+| `readme.path` | 책에서 Readme 경로 |
 
-### Glossary Variables
+### 용어사전 변수
 
-| Variable | Description |
+| 변수 | 설명 |
 | -------- | ----------- |
-| `glossary.path` | Path to the Glossary in the book |
+| `glossary.path` | 책에서 용어사전 경로 |

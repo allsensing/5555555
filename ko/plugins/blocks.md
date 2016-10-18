@@ -1,62 +1,68 @@
-# Extend Blocks
+# 블록 확장
 
-Extending templating blocks is the best way to provide extra functionalities to authors.
+템플릿 블록을 확장하는 것은 저자에게 추가 기능을 제공하는 가장 좋은 방법입니다.
 
-The most common usage is to process the content within some tags at runtime. It's like [filters](./filters.md), but on steroids because you aren't confined to a single expression.
+가장 일반적인 사용법은 실행 시간에 일부 태그내에서 내용을 처리하는 것입니다.
+[필터](./filters.md)와 유사하지만 강화되었습니다. 단일 표현에만 국한되지않기
+때문입니다.
 
-### Defining a new block
+### 새 블록 정의
 
-Blocks are defined by the plugin, blocks is a map of name associated with a block descriptor. The block descriptor needs to contain at least a `process` method.
+블록은 플러그인에 의해 정의됩니다. 블록은 블록 디스크립터와 관련된 이름의
+맵입니다. 블록 디스크립터는 적어도 `process` 메소드를 포함해야합니다.
 
 ```js
 module.exports = {
     blocks: {
         tag1: {
             process: function(block) {
-                return "Hello "+block.body+", How are you?";
+                return "안녕 "+block.body+", 어떻게 지내니?";
             }
         }
     }
 };
 ```
 
-The `process` should return the html content that will replace the tag. Refer to [Context and APIs](./api.md) to learn more about `this` and GitBook API.
+`process` 는 태그를 대체할 HTML 내용을 반환해야합니다.
+`이것`과 GitBook API 에 관한 자세한 내용은 [컨텍스트와 API](./api.md)를
+참조하세요.
 
-### Handling block arguments
+### 블록 인수 처리
 
-Arguments can be passed to blocks:
+인수는 블록에 전달될 수 있습니다:
 
 ```
-{% tag1 "argument 1", "argument 2", name="Test" %}
-This is the body of the block.
+{% tag1 "인수 1", "인수 2", name="테스트" %}
+이것은 블록의 몸체입니다.
 {% endtag1 %}
 ```
 
-And arguments are easily accessible in the `process` method:
+그리고 인수는 `process` 메소드 내에서 쉽게 접근 가능합니다:
 
 ```js
 module.exports = {
     blocks: {
         tag1: {
             process: function(block) {
-                // block.args equals ["argument 1", "argument 2"]
-                // block.kwargs equals { "name": "Test" }
+                // block.args 은 ["인수 1", "인수 2"] 와 같습니다
+                // block.kwargs 은 { "name": "테스트" } 와 같습니다
             }
         }
     }
 };
 ```
 
-### Handling sub-blocks
+### 하위 블록 처리
 
-A defined block can be parsed into different sub-blocks, for example let's consider the source:
+정의된 블록은 서로 다른 하위 블록으로 해석될 수 있습니다. 예를 들어 소스를
+살펴봅시다:
 
 ```
 {% myTag %}
-    Main body
+    본체
     {% subblock1 %}
-    Body of sub-block 1
+    하위 블록 1의 몸체
     {% subblock 2 %}
-    Body of sub-block 1
+    하위 블록 2의 몸체
 {% endmyTag %}
 ```

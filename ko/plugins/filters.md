@@ -1,6 +1,7 @@
-# Extend Filters
+# 필터 확장
 
-Filters are essentially functions that can be applied to variables. They are called with a pipe operator (`|`) and can take arguments.
+필터는 변수에 적용될 수 있는 본질적인 함수입니다. 그것은 파이프 연산 (`|`) 으로
+호출되며 인수를 가질 수 있습니다.
 
 ```
 {{ foo | title }}
@@ -8,38 +9,41 @@ Filters are essentially functions that can be applied to variables. They are cal
 {{ foo | replace("foo", "bar") | capitalize }}
 ```
 
-### Defining a new filter
+### 새 필터 정의
 
-Plugins can extend filters by defining custom functions in their entry point under the `filters` scope.
+플러그인은 `filters` 범위내의 자신의 진입점에 사용자 정의 함수를 정의하여 필터를
+확장할 수 있습니다.
 
-A filter function takes as first argument the content to filter, and should return the new content.
-Refer to [Context and APIs](./api.md) to learn more about `this` and GitBook API.
+필터 함수는 첫 인수를 필터에 대한 내용으로 받고, 새 내용을 반환해야 합니다.
+
+`this` 와 GitBook API 에 자세히 알아보려면 [컨텍스트와 API](./api.md) 를
+참조하세요.
 
 ```js
 module.exports = {
     filters: {
         hello: function(name) {
-            return 'Hello '+name;
+            return '안녕 '+name;
         }
     }
 };
 ```
 
-The filter `hello` can then be used in the book:
+`hello` 필터는 책에서 사용될 수 있습니다:
 
 ```
-{{ "Aaron"|hello }}, how are you?
+{{ "Aaron"|hello }}, 어떻게 지내니?
 ```
 
-### Handling block arguments
+### 블록 인수 처리
 
-Arguments can be passed to filters:
+인수는 필터에 전달될 수 있습니다:
 
 ```
-Hello {{ "Samy"|fullName("Pesse", man=true}} }}
+안녕 {{ "Samy"|fullName("Pesse", man=true}} }}
 ```
 
-Arguments are passed to the function, named-arguments are passed as a last argument (object).
+인수는 함수로 전달됩니다. 명명된 인수는 마지막 인수 (객체) 로 전달됩니다.
 
 ```js
 module.exports = {
