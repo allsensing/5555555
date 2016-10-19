@@ -18,6 +18,21 @@ $ gitbook mobi ./ ./mybook.mobi
 
 `ebook-convert` 은 전자책을 생성하는데 필요합니다 (epub, mobi, pdf).
 
+##### GNU/Linux
+
+[Calibre 애플리케이션](https://calibre-ebook.com/download)을 설치합니다.
+
+```
+$ sudo aptitude install calibre
+```
+
+일부 GNU/Linux 배포판은 nodejs 라는 이름으로 node 가 설치되어있습니다. 수동으로
+심볼릭 링크를 만들어줘야합니다:
+
+```
+$sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
 ##### OS X
 
 [Calibre 애플리케이션](https://calibre-ebook.com/download) 다운로드.
